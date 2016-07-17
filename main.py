@@ -338,8 +338,8 @@ def scan(access_token, api_endpoint):
                 difflng = diff.lng().degrees
                 direction = (('N' if difflat >= 0 else 'S') if abs(difflat) > 1e-4 else '')  + (('E' if difflng >= 0 else 'W') if abs(difflng) > 1e-4 else '')
                 # print("Within one step of %s (%sm %s from you):" % (other, int(origin.get_distance(other).radians * 6366468.241830914), direction))
-                for poke in cell.NearbyPokemon:
-                    print('(%s) %s' % (poke.PokedexNumber, pokemons[poke.PokedexNumber - 1]['Name']))
+                # for poke in cell.NearbyPokemon:
+                #    print('(%s) %s' % (poke.PokedexNumber, pokemons[poke.PokedexNumber - 1]['Name']))
 
         for poke in visible:
             other = LatLng.from_degrees(poke.Latitude, poke.Longitude)
@@ -357,7 +357,7 @@ def scan(access_token, api_endpoint):
         payload = {'text': "Pokemon scan results:\n\n %s" % ('\n'.join(poke_list))}
 
         notifier.notify(poke_list)
-        time.sleep(30)
+        time.sleep(10)
 
 if __name__ == '__main__':
     main()
