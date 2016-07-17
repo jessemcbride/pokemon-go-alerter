@@ -1,0 +1,7 @@
+argparse==1.2.1
+future==0.15.2
+geopy==1.11.0
+protobuf==2.6.1
+requests==2.10.0
+s2sphere==0.2.4
+wsgiref==0.1.2

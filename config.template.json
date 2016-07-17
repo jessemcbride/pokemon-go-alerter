@@ -1,0 +1,12 @@
+{
+	"username": "PTC LOGIN INFO",
+	"password": "PTC LOGIN INFO",
+	"location": "Location (Address or GPS coordinates)",
+	"services": [
+		{
+			"name": "No reason for this other than clarity when editing config",
+			"delay": 0 (minimum time to wait in between posting messages),
+			"webhook": "https://hooks.slack.com/services/something"
+		}
+	]
+}
