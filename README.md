@@ -1,4 +1,10 @@
+Slack example:
+
+![Slack example](http://i.imgur.com/mndTCkR.png)
+
 This script records the visible Pokemon in a given area and then alerts Slack channels (Discord soon!) with their locations. The code is a mess, but shouldn't be for too long.
+
+The credit for this project really goes to [leegao's work](https://github.com/leegao/pokemongo-api-demo) and others. I'm just a lowly web developer -- they're the real heroes.
 
 ## Configuration
 
