@@ -1,4 +1,10 @@
+Slack example:
+
+![Slack example](http://i.imgur.com/mndTCkR.png)
+
 This script records the visible Pokemon in a given area and then alerts Slack channels (Discord soon!) with their locations. The code is a mess, but shouldn't be for too long.
+
+The credit for this project really goes to [leegao's work](https://github.com/leegao/pokemongo-api-demo) and others. I'm just a lowly web developer -- they're the real heroes.
 
 ## Configuration
 
@@ -27,4 +33,16 @@ Several Slack channels can be configured with different message delays like so:
 
 The `delay` field is the minimum time in seconds between alerts. It's not exact, it's just a buffer to prevent your channel from being spammed.
 
+## Running
 
+Using pip, install `requirements.txt`:
+
+```
+$ pip install -r requirements.txt
+```
+
+Make changes to the configuration file, and then run the script:
+
+```
+$ python main.py
+```
