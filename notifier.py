@@ -19,21 +19,17 @@ class Notifier(object):
             pokemon = results[i].split(' ')[0]
 
             if pokemon not in COMMON:
-                results[i] = ":tada: " + results[i] + " :tada:"
-
+                results[i] = ":tada: " + results[i]
+     
         results = {'text': "Pokemon scan results:\n\n %s" % ('\n'.join(results))}
 
         for service in self.services:
-
-            if time.time() - service.get('last_message', time.time()) < service.get('delay'):
+            if time.time() - service.get('last_message', time.time()) < service.get('delay', 60):
                 service['last_message'] = time.time()
-                print 'Delaying for another few seconds (%s)' % service.get('delay')
-                return
+                continue
 
             if service.get('webhook'):
-                # This is a Slack channel
                 r = requests.post(service.get('webhook'), data=json.dumps(results))
-
                 service['last_message'] = time.time()
-
-        print results
+            else:
+                print 'Service not yet supported.'

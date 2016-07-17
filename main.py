@@ -160,7 +160,7 @@ def get_api_endpoint(access_token, api = API_URL):
         return None
 
 def login_ptc(username, password):
-    print('[!] login for: {}'.format(username))
+    print('[!] Login for: {}'.format(username))
     head = {'User-Agent': 'niantic'}
     r = session.get(LOGIN_URL, headers=head)
     
@@ -254,6 +254,12 @@ def main():
     while access_token is None:
         print('[-] Unable to authenticate with Pokemon Trainer Club credentials. Retrying...')
         time.sleep(randint(2, 12))
+
+        # Start a new session
+        global session
+        session = requests.session()
+        session.headers.update({'User-Agent': 'Niantic App'})
+        session.verify = False
         access_token = login_ptc(config['username'], config['password'])
 
     print('[+] RPC Session Token: {} ...'.format(access_token[:25]))
@@ -262,7 +268,6 @@ def main():
 
     while api_endpoint is None:
         api_endpoint = get_api_endpoint(access_token)
-
         print('[-] RPC server offline. Retrying...')
 
     print('[+] Received API endpoint: {}'.format(api_endpoint))
@@ -278,9 +283,11 @@ def scan(access_token, api_endpoint):
     response = get_profile(access_token, api_endpoint, None)
     origin = LatLng.from_degrees(FLOAT_LAT, FLOAT_LONG)
 
-    if response is None:
+    while response is None:
         print("[-] Failed to connect, retrying...")
-        scan(access_token, api_endpoint)
+        time.sleep(randint(2, 12))
+        main()
+        return
 
     while True:
         print "[!] Scanning for nearby Pokemon..."
