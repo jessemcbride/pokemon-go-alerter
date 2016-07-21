@@ -357,7 +357,7 @@ def scan(access_token, api_endpoint):
         payload = {'text': "Pokemon scan results:\n\n %s" % ('\n'.join(poke_list))}
 
         notifier.notify(poke_list)
-        time.sleep(10)
+        time.sleep(120)
 
 if __name__ == '__main__':
     main()
