@@ -31,7 +31,7 @@ Several Slack channels can be configured with different message delays like so:
 	]
 ```
 
-The `delay` field is the minimum time in seconds between alerts. It's not exact, it's just a buffer to prevent your channel from being spammed.
+The `delay` field is the minimum time in seconds between alerts. It's not exact, it's just a buffer to prevent your channel from being spammed (the latest commit to master disables this functionality -- need to fix!).
 
 ## Running
 
