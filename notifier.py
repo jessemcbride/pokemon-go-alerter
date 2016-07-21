@@ -24,9 +24,6 @@ class Notifier(object):
         results = {'text': "Pokemon scan results:\n\n %s" % ('\n'.join(results))}
 
         for service in self.services:
-            if time.time() - service.get('last_message', time.time()) < service.get('delay', 60):
-                service['last_message'] = time.time()
-                continue
 
             if service.get('webhook'):
                 r = requests.post(service.get('webhook'), data=json.dumps(results))
